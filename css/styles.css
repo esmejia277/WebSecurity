@@ -1,0 +1,17 @@
+body{
+  background-color: #dee1e5;
+}
+
+.jumbotron{
+  -moz-border-radius: 0 0 25px 25px;
+  -webkit-border-radius: 0 0 25px;
+  border-radius: 0 0 25px 25px;
+
+}
+
+.item{
+  -moz-border-radius: 25px;
+  -webkit-border-radius: 25px;
+  border-radius: 25px;
+
+}
