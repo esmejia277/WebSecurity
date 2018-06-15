@@ -24,3 +24,25 @@ body{
   -webkit-border-radius: 25px 25px 0 0 !important;
   border-radius: 25px 25px 0 0 !important;
 }
+
+.navbar-brand:link, .navbar-brand:visited{
+  color:white !important;
+}
+
+.navbar-brand:hover, .navbar-brand:active{
+  color: #4e5750 !important;
+}
+
+.nav-link:link, .nav-link:visited{
+  color: white !important;
+}
+
+#collapsed-bar li a:link, #collapsed-bar li a:visited{
+  color:white !important;
+
+}
+
+#collapsed-bar li a:hover, #collapsed-bar li a:active{
+  color: #4e5750 !important;
+
+}
