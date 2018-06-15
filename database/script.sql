@@ -1,11 +1,11 @@
-create database blog;
-use blog;
-create table usuarios(
+create database WebSecurity;
+use WebSecurity;
+create table users(
   id int not null auto_increment,
-  nombre varchar(25) not null,
+  name varchar(25) not null,
   email varchar(255) not null,
-  password varchar(40) not null,
-  fecha_registro datetime not null,
-  activo tinyint not null,
+  passw varchar(40) not null,
+  date_sign datetime not null,
+  active tinyint not null,
   primary key(id)
 );

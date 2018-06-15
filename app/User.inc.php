@@ -55,11 +55,4 @@ class Usuario{
   public function getActive(){
     $this -> active;
   }
-
-
-
-
-
-
-
  ?>
