@@ -32,4 +32,23 @@ class RepoUser{
     }
     return $users;
   }
+
+  public static function getUsersNumber($connection){
+
+    $total = null;
+    if(isset($connection)){ /*if connection exists*/
+      try {
+        $sql = "SELECT COUNT(*) as total FROM users";
+        $sentence = $connection -> prepare($sql);  /* preare the query */
+        $sentence -> execute(); /* execute the query */
+        $result = $sentence -> fetch(); /* retrieve total variable */
+        $total = $result['total'];
+
+      } catch (PDOException $e) {
+        print 'ERROR' . $e -> getMessage();
+
+      }
+    }
+    return $total;
+  }
 }
