@@ -1,3 +1,13 @@
+<?php
+include_once 'app/Connection.inc.php';
+include_once 'app/RepoUser.php';
+
+Connection::openConnection();
+$total = RepoUser::getUsersNumber(Connection::getConnection());
+Connection::closeConnection();
+
+?>
+
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
   <head>
@@ -6,34 +16,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <title>Blog</title>
+    <link rel="stylesheet" href="fontawesome-free-5.0.13/web-fonts-with-css/css/fontawesome-all.min.css">
+    <title></title>
   </head>
   <body>
     <nav class="navbar navbar-expand-md bg-dark navbar-dark">
     <div class="container">
-        <a href="#" class="navbar-brand">Navbar</a>
+        <a href="#" class="navbar-brand">Security!</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsed-bar">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="collapsed-bar">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a href="#" class="nav-link">Link1</a>
+              <a href="#" class="nav-link">
+                <i class="fas fa-list-ul"></i>
+                Entradas</a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">Link2</a>
+              <a href="#" class="nav-link">
+                <i class="fas fa-star"></i>
+                Favoritos
+              </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">Link3</a>
+              <a href="#" class="nav-link">
+                <i class="fas fa-book"></i>
+                Autores
+              </a>
             </li>
           </ul>
           <ul class="navbar-nav ml-auto">
+
             <li class="nav-item">
-              <a href="#" class="nav-link">Iniciar sesión</a>
+              <a href="#" class="nav-link">
+                <i class="far fa-user" aria-j></i>
+                <?php echo $total; ?>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="fas fa-sign-in-alt"></i>
+                Iniciar sesión
+              </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">Registro</a>
+              <a href="#" class="nav-link">
+                <i class="fas fa-user-plus"></i>
+                Registro
+              </a>
             </li>
           </ul>
         </div>
@@ -54,7 +86,7 @@
               <div class="card item">
                 <div class="card-header">
                   <h5>
-                  <i class="material-icons md-5 ">search</i> Busqueda
+                  <i class="fab fa-sistrix"></i> Busqueda
                   </h5>
                 </div>
                 <div class="card-body">
@@ -71,7 +103,7 @@
               <div class="card item">
                 <div class="card-header">
                   <h5>
-                    <i class="material-icons">filter_list</i> Filtro
+                    <i class="fas fa-filter"></i> Filtro
                   </h5>
                 </div>
                 <div class="card-body ">
@@ -86,7 +118,7 @@
               <div class="card item">
                 <div class="card-header">
                   <h5>
-                    <i class="material-icons">calendar_today</i> Archivo
+                    <i class="far fa-calendar-alt"></i> Archivo
                   </h5>
                 </div>
                 <div class="card-body">
@@ -102,22 +134,10 @@
           <div class="card item">
             <div class="card-header">
               <h5>
-                <i class="material-icons md-24">schedule</i>
-              Últimas entradas
+                <i class="far fa-newspaper"></i> Últimas entradas
               </h5>
             </div>
             <div class="card-body">
-              <?php
-              include_once 'app/Connection.inc.php';
-              include_once 'app/RepoUser.php';
-
-              Connection::openConnection();
-              $users = RepoUser::getAll(Connection::getConnection());
-              echo "Usuarios: " . count($users) . "<br>";
-
-              Connection::closeConnection();
-
-               ?>
 
 
               <p>No hay entradas aún</p>
