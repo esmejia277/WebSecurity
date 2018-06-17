@@ -8,7 +8,7 @@ class Connection{
         self::$connection = new PDO("mysql:host=$server;dbname=$database", $user_name, $passwd); /*open connection*/
         self::$connection -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); /*show erro*/
         self::$connection -> exec("SET CHARACTER SET utf8");
-        print 'OPEN';
+        print 'OPEN'. "<br>";
 
       } catch (PDOException $e) {
         print('ERROR:'.$e->getMessage()."<br>");
@@ -20,7 +20,7 @@ class Connection{
   public static function closeConnection(){
     if(isset(self::$connection)){
       self:$connection = null;
-      print 'CLOSED';
+      print 'CLOSED' . "<br>" ;
     }
   }
 

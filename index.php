@@ -107,7 +107,22 @@
               </h5>
             </div>
             <div class="card-body">
+              <?php
+              include_once 'app/Connection.inc.php';
+              include_once 'app/RepoUser.php';
+
+              Connection::openConnection();
+              $users = RepoUser::getAll(Connection::getConnection());
+              echo "Usuarios: " . count($users) . "<br>";
+
+              Connection::closeConnection();
+
+               ?>
+
+
               <p>No hay entradas aún</p>
+
+
             </div>
           </div>
         </div>

@@ -1,5 +1,5 @@
 <?php
-class Usuario{
+class User{
   private $id;
   private $name;
   private $email;
@@ -53,6 +53,6 @@ class Usuario{
   }
 
   public function getActive(){
-    $this -> active;
+    return $this -> active;
   }
- ?>
+}
