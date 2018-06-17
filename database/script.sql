@@ -10,4 +10,4 @@ create table users(
   primary key(id)
 );
 
-insert into users (name, email, passw, date_sign, active) values ("Esteban", "estebanmejia277@gmail.com", "esteban123", 2015-08-13 05:06:09, 1);
+insert into users (name, email, passw, date_sign, active) values ("Esteban", "estebanmejia277@gmail.com", "esteban123", "2015-08-13 05:06:09", 1);
