@@ -76,4 +76,4 @@ include_once 'views/navbar.inc.php';
         </div>
       </div>
     </div>
-<?php include_once 'views/open_html.inc.php'; ?>
+<?php include_once 'views/close_html.inc.php'; ?>

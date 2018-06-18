@@ -65,25 +65,18 @@ include_once 'views/navbar.inc.php';
                   <input id="form-passwd2" type="password" class="form-control">
                 </div>
                 <br>
-                <button class="btn btn-default btn-primary" type="submit" name="button">Registrarse</button>
+                <div class="text-center">
+                  <button class="btn btn-default btn-primary" type="submit">Registrarse</button>
+                  <button class="btn btn-default btn-primary" type="reset">Limpiar</button>
+                </div>
                 <br>
               </form>
             </div>
-
           </div>
-
       </div>
-
-
     </div>
-
-
   </div>
 </div>
-
-
-
-
 <?php
-include_once 'views/open_html.inc.php';
+include_once 'views/close_html.inc.php';
 ?>
