@@ -75,4 +75,63 @@ class RepoUser{
     }
     return $inserted;
   }
+
+  public static function ifNameExists($connection, $name){
+
+    $exists = true;
+
+    if(isset($connection)){
+      try {
+        $sql = 'SELECT * FROM users WHERE name = :name ';
+        $sentence = $connection -> prepare($sql);
+        $sentence -> bindParam(':name', $name, PDO::PARAM_STR);
+        $sentence -> execute();
+        $result = $sentence -> fetchAll();
+
+        if(count($result)){
+          $exists = true;
+        }else{
+          $exists = false;
+        }
+
+      } catch (PDOException $e) {
+        print 'ERROR' .$e -> getMessage();
+      }
+    }
+    return $exists;
+  }
+
+  public static function ifEmailExists($connection, $email){
+
+    $exists = true;
+
+    if(isset($connection)){
+      try {
+        $sql = 'SELECT * FROM users WHERE email = :email ';
+        $sentence = $connection -> prepare($sql);
+        $sentence -> bindParam(':email', $email, PDO::PARAM_STR);
+        $sentence -> execute();
+        $result = $sentence -> fetchAll();
+
+        if(count($result)){
+          $exists = true;
+        }else{
+          $exists = false;
+        }
+
+      } catch (PDOException $e) {
+        print 'ERROR' .$e -> getMessage();
+      }
+    }
+    return $exists;
+  }
+
+
+
+
+
+
+
+
+
 }

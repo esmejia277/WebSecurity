@@ -1,4 +1,5 @@
 <?php
+include_once 'app/RepoUser.inc.php';
 
 class RegisterValidate{
 
@@ -13,7 +14,7 @@ class RegisterValidate{
   private $password_error;
   private $password2_error;
 
-  public function __construct($name, $email, $password, $password2){
+  public function __construct($name, $email, $password, $password2, $connection){
     $this -> open_message = "<br><div class = 'alert alert-danger' role = 'alert'>";
     $this -> close_message  = "</div>";
 
@@ -21,12 +22,12 @@ class RegisterValidate{
     $this -> email = "";
     $this -> password = "";
 
-    $this -> name_error = $this -> validateName($name);
-    $this -> email_error = $this -> validateEmail($email);
+    $this -> name_error = $this -> validateName($connection, $name);
+    $this -> email_error = $this -> validateEmail($connection, $email);
     $this -> password_error = $this -> validatePassword($password);
     $this -> password2_error = $this -> validatePassword2($password, $password2);
 
-    if($this->password_error === "" && $this->password2_error == ""){
+    if($this->password_error === "" && $this->password2_error === ""){
       $this -> passwd = $password;
     }
   }
@@ -39,7 +40,7 @@ class RegisterValidate{
     }
   }
 
-  private function validateName($name){ // if var is not started and if it's empty
+  private function validateName($connection, $name){ // if var is not started and if it's empty
     if(!$this -> initVar($name)){
       return 'Escribe un nombre de usuario';
     }else{
@@ -53,17 +54,28 @@ class RegisterValidate{
     if(strlen($name) > 24){
       return 'El nombre no puede contener mas de 24 caracteres';
     }
+
+    if(RepoUser :: ifNameExists($connection, $name)){
+      return 'Nombre de usuario en uso, por favor ingresa uno diferente.';
+    }
     return "";
   }
 
-  private function validateEmail($email){
+
+  private function validateEmail($connection, $email){
     if(!$this -> initVar($email) ){
       return 'Debes ingresar un email';
     }else{
       $this -> email = $email;
     }
+
+    if(RepoUser :: ifEmailExists($connection, $email)){
+      return "Email en uso, porfavor prueba otro email o <a href='#'> intenta recuperar tu contraseña </a>";
+    }
+
     return "";
   }
+
 
   private function validatePassword($password){
     if(!$this -> initVar($password) ){
@@ -95,7 +107,7 @@ class RegisterValidate{
   }
 
   public function getEmail(){
-    return $this -> name;
+    return $this -> email;
   }
 
   public function getPasswd(){
