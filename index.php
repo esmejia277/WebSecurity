@@ -1,6 +1,6 @@
 <?php
 include_once 'app/Connection.inc.php';
-include_once 'app/RepoUser.php';
+include_once 'app/RepoUser.inc.php';
 $title = "WebSecurity!";
 include_once 'views/open_html.inc.php';
 include_once 'views/navbar.inc.php';
