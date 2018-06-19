@@ -7,6 +7,7 @@ class RegisterValidate{
 
   private $name;
   private $email;
+  private $passwd;
   private $name_error;
   private $email_error;
   private $password_error;
@@ -15,12 +16,19 @@ class RegisterValidate{
   public function __construct($name, $email, $password, $password2){
     $this -> open_message = "<br><div class = 'alert alert-danger' role = 'alert'>";
     $this -> close_message  = "</div>";
+
     $this -> name = "";
     $this -> email = "";
+    $this -> password = "";
+
     $this -> name_error = $this -> validateName($name);
     $this -> email_error = $this -> validateEmail($email);
     $this -> password_error = $this -> validatePassword($password);
     $this -> password2_error = $this -> validatePassword2($password, $password2);
+
+    if($this->password_error === "" && $this->password2_error == ""){
+      $this -> passwd = $password;
+    }
   }
 
   private function initVar($var){
@@ -88,6 +96,10 @@ class RegisterValidate{
 
   public function getMail(){
     return $this -> name;
+  }
+
+  public function getPasswd(){
+    return $this -> passwd;
   }
 
   public function getNameError(){
