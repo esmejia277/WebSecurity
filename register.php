@@ -1,9 +1,19 @@
 <?php
 include_once 'app/Connection.inc.php';
 include_once 'app/RepoUser.php';
+include_once 'app/RegisterValidate.inc.php';
+
+if(isset($_POST['send'])){
+  $validate = new RegisterValidate($_POST['name'], $_POST['email'], $_POST['password'], $_POST['password2']);
+  if($validate -> formOK()){
+    echo 'Registro Correcto';
+  }
+}
+
 $title = "Registro";
 include_once 'views/open_html.inc.php';
 include_once 'views/navbar.inc.php';
+
 ?>
 <div class="container">
   <div class="jumbotron">
@@ -36,9 +46,7 @@ include_once 'views/navbar.inc.php';
           </div>
         </div>
         <br>
-
       </div>
-
       <div class="col-md-6">
         <div class="card item">
           <div class="card-header">
@@ -47,29 +55,14 @@ include_once 'views/navbar.inc.php';
             </h3>
           </div>
             <div class="card-body">
-              <form role = "form">
-                <div class="form-group">
-                  <label for="form-text">Nombre de usuario</label>
-                  <input id="form-text" type="text" class="form-control">
-                </div>
-                <div class="form-group">
-                  <label for="form-email">Email</label>
-                  <input id="form-email" type="email" class="form-control">
-                </div>
-                <div class="form-group">
-                  <label for="form-passw">Contraseña</label>
-                  <input id="form-passw" type="password" class="form-control">
-                </div>
-                <div class="form-group">
-                  <label for="form-passwd2">Repite la contraseña</label>
-                  <input id="form-passwd2" type="password" class="form-control">
-                </div>
-                <br>
-                <div class="text-center">
-                  <button class="btn btn-default btn-primary" type="submit">Registrarse</button>
-                  <button class="btn btn-default btn-primary" type="reset">Limpiar</button>
-                </div>
-                <br>
+              <form role = "form" method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
+                <?php
+                if(isset($_POST['send'])){   //if the submit button is pushed
+                  include_once 'views/submit_register.inc.php';
+                }else {
+                  include_once 'views/empty_register.inc.php';
+                }
+                ?>
               </form>
             </div>
           </div>
