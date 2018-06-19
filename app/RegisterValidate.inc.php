@@ -94,7 +94,7 @@ class RegisterValidate{
     return $this -> name;
   }
 
-  public function getMail(){
+  public function getEmail(){
     return $this -> name;
   }
 

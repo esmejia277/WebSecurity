@@ -51,4 +51,28 @@ class RepoUser{
     }
     return $total;
   }
+
+  public static function UserInsert($connection, $user){
+    $inserted = false;
+    $nametmp = $user -> getName();
+    $emailtmp = $user -> getEmail();
+    $passwordtmp = $user -> getPassword();
+
+    if(isset($connection)){
+      try {
+        $sql = "INSERT INTO users (name, email, passw, date_sign, active) VALUES(:name, :email, :passw, NOW(), 0)"; /*  : alias*/
+        $sentence = $connection -> prepare($sql);
+
+
+        $sentence -> bindParam(':name', $nametmp, PDO::PARAM_STR);
+        $sentence -> bindParam(':email', $emailtmp, PDO::PARAM_STR);
+        $sentence -> bindParam(':passw', $passwordtmp , PDO::PARAM_STR);
+        $inserted = $sentence -> execute();
+
+      } catch (PDOException $e) {
+        print 'Error' . $e -> getMessage();
+      }
+    }
+    return $inserted;
+  }
 }

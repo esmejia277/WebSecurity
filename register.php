@@ -1,13 +1,20 @@
 <?php
 include_once 'app/Connection.inc.php';
 include_once 'app/RepoUser.php';
+include_once 'app/User.inc.php';
 include_once 'app/RegisterValidate.inc.php';
 
 if(isset($_POST['send'])){
+  Connection :: openConnection();
   $validate = new RegisterValidate($_POST['name'], $_POST['email'], $_POST['password'], $_POST['password2']);
   if($validate -> formOK()){
-    echo 'Registro Correcto';
+    $user = new User('', $validate -> getName(), $validate -> getEmail(), $validate -> getPasswd(), '', '');
+    $inserted = RepoUser :: UserInsert(Connection::getConnection(), $user);
+    if($inserted){
+      //redirect to login
+    }
   }
+  Connection :: closeConnection();
 }
 
 $title = "Registro";

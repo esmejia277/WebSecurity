@@ -1,6 +1,7 @@
 <?php
-$server = 'localhost';
-$user_name = 'root';
-$passwd = "";
-$database = 'WebSecurity';
+//constant variable
+define('name_server', 'localhost');
+define('user_name', 'root');
+define('password', '');
+define('database','WebSecurity');
 ?>
