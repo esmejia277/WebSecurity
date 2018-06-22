@@ -8,7 +8,12 @@ if(isset($_POST['send'])){
   Connection :: openConnection();
   $validate = new RegisterValidate($_POST['name'], $_POST['email'], $_POST['password'], $_POST['password2'], Connection::getConnection());
   if($validate -> formOK()){
-    $user = new User('', $validate -> getName(), $validate -> getEmail(), $validate -> getPasswd(), '', '');
+    $user = new User('', $validate -> getName(),
+    $validate -> getEmail(),
+    password_hash($validate -> getPasswd(), PASSWORD_DEFAULT), // password encryption
+     '',
+     '');
+
     $inserted = RepoUser :: UserInsert(Connection::getConnection(), $user);
     if($inserted){
       //redirect to login
