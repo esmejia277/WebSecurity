@@ -5,7 +5,7 @@ Connection::closeConnection();
 
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
 <div class="container">
-    <a href="#" class="navbar-brand">Security!</a>
+    <a href="index.php" class="navbar-brand">Security!</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsed-bar">
       <span class="navbar-toggler-icon"></span>
     </button>
