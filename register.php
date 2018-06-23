@@ -3,6 +3,7 @@ include_once 'app/Connection.inc.php';
 include_once 'app/RepoUser.inc.php';
 include_once 'app/User.inc.php';
 include_once 'app/RegisterValidate.inc.php';
+include_once 'app/Redirect.inc.php';
 
 if(isset($_POST['send'])){
   Connection :: openConnection();
@@ -16,7 +17,8 @@ if(isset($_POST['send'])){
 
     $inserted = RepoUser :: UserInsert(Connection::getConnection(), $user);
     if($inserted){
-      //redirect to login
+      //redirect to welcome page
+      Redirect :: redirection(correct_register . '?name=' . $user -> getName());
     }
   }
   Connection :: closeConnection();
