@@ -26,6 +26,11 @@ body{
   border-radius: 25px 25px 0 0 !important;
 }
 
+.welcome-register{
+  margin: 50px 20px 20px 50px;
+
+}
+
 .navbar-brand:link, .navbar-brand:visited{
   color:white !important;
 }
