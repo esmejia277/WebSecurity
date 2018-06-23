@@ -17,7 +17,7 @@ include_once 'views/navbar.inc.php';
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <div class="card item welcome-register">
+      <div class="card item margin-card">
         <div class="card-header">
           <i class="fas fa-check-circle"></i> Registro correcto
         </div>
