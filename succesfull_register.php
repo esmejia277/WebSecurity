@@ -2,7 +2,6 @@
 include_once 'app/config.inc.php';
 include_once 'app/Connection.inc.php';
 include_once 'app/RepoUser.inc.php';
-include_once 'app/Redirect.inc.php';
 
 if(isset($_GET['name']) && !empty($_GET['name'])){
   $name = $_GET['name'];
@@ -22,9 +21,9 @@ include_once 'views/navbar.inc.php';
           <i class="fas fa-check-circle"></i> Registro correcto
         </div>
         <div class="card-body text-center">
-          <p>¡Gracias por registrarte <b><?php echo $name?></b>!</p>
+          <p>¡Gracias por registrarte <b><?php echo $name;?></b>!</p>
           <br>
-          <p><a href="<?php echo login ?>">Inicia sesión para comenzar a usar tu cuenta </a></p>
+          <p><a href="<?php echo login ?>">Inicia sesión</a> para utilizar tu cuenta.</p>
         </div>
       </div>
     </div>
