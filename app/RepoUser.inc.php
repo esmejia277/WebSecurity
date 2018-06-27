@@ -22,10 +22,8 @@ class RepoUser{
         }else{
           print 'NO users found';
         }
-
       } catch (PDOException $ex) {
         print "ERROR" .$ex ->getMessage();
-
       }
     }else{
       print 'Error, not started connection';
@@ -46,7 +44,6 @@ class RepoUser{
 
       } catch (PDOException $e) {
         print 'ERROR' . $e -> getMessage();
-
       }
     }
     return $total;
@@ -62,13 +59,10 @@ class RepoUser{
       try {
         $sql = "INSERT INTO users (name, email, passw, date_sign, active) VALUES(:name, :email, :passw, NOW(), 0)"; /*  : alias*/
         $sentence = $connection -> prepare($sql);
-
-
         $sentence -> bindParam(':name', $nametmp, PDO::PARAM_STR);
         $sentence -> bindParam(':email', $emailtmp, PDO::PARAM_STR);
         $sentence -> bindParam(':passw', $passwordtmp , PDO::PARAM_STR);
         $inserted = $sentence -> execute();
-
       } catch (PDOException $e) {
         print 'Error' . $e -> getMessage();
       }
@@ -79,7 +73,6 @@ class RepoUser{
   public static function ifNameExists($connection, $name){
 
     $exists = true;
-
     if(isset($connection)){
       try {
         $sql = 'SELECT * FROM users WHERE name = :name ';
@@ -87,13 +80,11 @@ class RepoUser{
         $sentence -> bindParam(':name', $name, PDO::PARAM_STR);
         $sentence -> execute();
         $result = $sentence -> fetchAll();
-
         if(count($result)){
           $exists = true;
         }else{
           $exists = false;
         }
-
       } catch (PDOException $e) {
         print 'ERROR' .$e -> getMessage();
       }
@@ -104,7 +95,6 @@ class RepoUser{
   public static function ifEmailExists($connection, $email){
 
     $exists = true;
-
     if(isset($connection)){
       try {
         $sql = 'SELECT * FROM users WHERE email = :email ';
@@ -112,13 +102,11 @@ class RepoUser{
         $sentence -> bindParam(':email', $email, PDO::PARAM_STR);
         $sentence -> execute();
         $result = $sentence -> fetchAll();
-
         if(count($result)){
           $exists = true;
         }else{
           $exists = false;
         }
-
       } catch (PDOException $e) {
         print 'ERROR' .$e -> getMessage();
       }
@@ -126,12 +114,27 @@ class RepoUser{
     return $exists;
   }
 
-
-
-
-
-
-
-
-
+  public static function getUserEmail($connection, $email){
+    $user = null;
+    if(isset($connection)){
+      try {
+        $sql = 'SELECT * FROM users WHERE email = :email';
+        $sentence = $connection -> prepare($sql);
+        $sentence -> bindParam(':email', $email, PDO::PARAM_STR);
+        $sentence -> execute();
+        $result = $sentence -> fetch();
+        if(!empty($result)){
+          $user = new User($result['id'],
+          $result['name'],
+          $result['email'],
+          $result['passw'],
+          $result['data_sign'],
+          $result['active']);
+        }
+      } catch (PDOException $e) {
+        print 'Error' . $ex -> getMessage();
+      }
+    }
+    return $user;
+  }
 }
