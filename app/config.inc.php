@@ -8,5 +8,5 @@ define('database','WebSecurity');
 //routes
 define("server", "http://localhost:10000");
 define("register", server . "/register.php");
-define("correct_register", server . "/succesfull_register.php");
-define("login", server, "/login.php");
+define("login", server . "/login.php");
+define("correct_register" , server . "/succesfull_register.php");
