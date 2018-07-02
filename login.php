@@ -3,17 +3,28 @@ include_once 'app/config.inc.php';
 include_once 'app/Connection.inc.php';
 include_once 'app/RepoUser.inc.php';
 include_once 'app/LoginValidate.inc.php';
+include_once 'app/ControlSession.inc.php';
+include_once 'app/Redirect.inc.php';
 $title = "Login";
 include_once 'views/open_html.inc.php';
 include_once 'views/navbar.inc.php';
 
+if(ControlSession :: ifStartedSession()){
+  Redirect :: redirection(server);
+}
+
 if(isset($_POST['login'])){
   Connection :: openConnection();
-  $validate = new LoginValidate($_POST['email'], $_POST['password'], Connection::getConnection());
+  $validate = new LoginValidate($_POST['email-login'], $_POST['password-login'], Connection::getConnection());
+  var_dump($validate);
 
   if($validate -> getError() === '' && !is_null($validate -> getUser())){ // if there's not error
-    //iniciar sesión
-    echo 'inicio de sesion ok';
+    ControlSession :: sessionStart(
+      $validate -> getUser() -> getID() ,
+      $validate -> getUser() -> getName()
+    );
+    Redirect :: redirection(server);
+
   }else{
     echo 'fallo';
   }
