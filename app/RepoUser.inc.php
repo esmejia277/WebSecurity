@@ -118,6 +118,7 @@ class RepoUser{
     $user = null;
     if(isset($connection)){
       try {
+        include_once 'User.inc.php';
         $sql = 'SELECT * FROM users WHERE email = :email';
         $sentence = $connection -> prepare($sql);
         $sentence -> bindParam(':email', $email, PDO::PARAM_STR);
