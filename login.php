@@ -3,13 +3,13 @@ include_once 'app/config.inc.php';
 include_once 'app/Connection.inc.php';
 include_once 'app/RepoUser.inc.php';
 include_once 'app/LoginValidate.inc.php';
-include_once 'app/ControlSession.inc.php';
+include_once 'app/SessionControl.inc.php';
 include_once 'app/Redirect.inc.php';
 $title = "Login";
 include_once 'views/open_html.inc.php';
 include_once 'views/navbar.inc.php';
 
-if(ControlSession :: ifStartedSession()){
+if(SessionControl :: ifStartedSession()){
   Redirect :: redirection(server);
 }
 
@@ -19,7 +19,7 @@ if(isset($_POST['login'])){
   var_dump($validate);
 
   if($validate -> getError() === '' && !is_null($validate -> getUser())){ // if there's not error
-    ControlSession :: sessionStart(
+    SessionControl :: sessionStart(
       $validate -> getUser() -> getID() ,
       $validate -> getUser() -> getName()
     );
