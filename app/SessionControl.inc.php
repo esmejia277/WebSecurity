@@ -1,6 +1,6 @@
 <?php
 
-class ControlSession{
+class SessionControl{
 
   public static function sessionStart($id, $name){
     if(session_id() == ''){ //if session is not started
