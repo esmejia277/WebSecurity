@@ -27,11 +27,5 @@ class Connection{
   public static function getConnection(){
     return self::$connection;
   }
-
-
-
-
-
-
 }
 ?>

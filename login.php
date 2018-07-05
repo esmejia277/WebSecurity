@@ -1,5 +1,5 @@
 <?php
-include_once 'app/config.inc.php';
+include_once 'app/Config.inc.php';
 include_once 'app/Connection.inc.php';
 include_once 'app/RepoUser.inc.php';
 include_once 'app/LoginValidate.inc.php';
