@@ -4,7 +4,7 @@ class Connection{
   public static function openConnection(){
     if(!isset(self::$connection)){ /* if connection is started */
       try {
-        include_once 'config.inc.php';
+        include_once 'Config.inc.php';
         self::$connection = new PDO('mysql:host='.name_server.'; dbname='.database,user_name, password); /*open connection*/
         self::$connection -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); /*show erro*/
         self::$connection -> exec("SET CHARACTER SET utf8");
