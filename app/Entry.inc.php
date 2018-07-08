@@ -42,10 +42,6 @@
       $this -> id = $id;
     }
 
-    public function setDate($date){
-      $this -> date = $date;
-    }
-
     public function getDate(){
       return $this -> date;
     }
@@ -57,19 +53,6 @@
     public function getActive(){
       return $this -> active;
     }
-
-
-
-
-
-
-
-
-
   }
-
-
-
-
 
  ?>
