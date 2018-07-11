@@ -22,7 +22,7 @@ class Comment{
     return $this -> id;
   }
 
-  public function getAuthor(){
+  public function getAuthor_ID(){
     return $this -> author_id;
   }
 

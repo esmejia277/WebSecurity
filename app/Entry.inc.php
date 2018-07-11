@@ -34,12 +34,20 @@
       return $this -> author_id;
     }
 
+    public function setTitle($title){
+      $this -> title = $title;
+    }
+
+    public function getTitle(){
+      return $this -> title;
+    }
+
     public function setText($text){
       $this -> text = $text;
     }
 
     public function getText(){
-      $this -> id = $id;
+      return $this -> text;
     }
 
     public function getDate(){
