@@ -19,11 +19,39 @@ class RepoEntry{
         $sentence -> bindParam(':author_id', $author_id_tmp, PDO::PARAM_STR);
         $sentence -> bindParam(':title', $title_tmp, PDO::PARAM_STR);
         $sentence -> bindParam(':text', $text_tmp , PDO::PARAM_STR);
-        $$insert_entry = $sentence -> execute();
+        $insert_entry = $sentence -> execute();
       } catch (PDOException $e) {
         print 'Error' . $e -> getMessage();
       }
     }
     return $insert_entry;
+  }
+
+  public static function getAllDate($connection){
+    $entries = [];
+    if(isset($connection)){
+      try {
+        $sql = "SELECT * FROM entries ORDER BY date DESC";
+        $sentence = $connection -> prepare($sql);
+        $sentence -> execute();
+        $result = $sentence -> fetchAll(); //array retrieve
+
+        if(count($result)){
+          foreach ($result as $row) {
+            $entries[] = new Entry(
+              $row['id'],
+              $row['author_id'],
+              $row['title'],
+              $row['text'],
+              $row['date'],
+              $row['active']
+            );
+          }
+        }
+      } catch (PDOException $e) {
+        print 'ERROR' . $e -> getMessage();
+      }
+    }
+    return $entries;
   }
 }
