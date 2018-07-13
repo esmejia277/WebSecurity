@@ -1,6 +1,7 @@
 <?php
 include_once 'app/Connection.inc.php';
 include_once 'app/RepoUser.inc.php';
+include_once 'app/WriteEntry.inc.php';
 $title = "WebSecurity!";
 include_once 'views/open_html.inc.php';
 include_once 'views/navbar.inc.php';
@@ -56,24 +57,15 @@ include_once 'views/navbar.inc.php';
                 </div>
                 <div class="card-body">
                   <p>...</p>
-
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div class="col-md-8">
-          <div class="card item">
-            <div class="card-header">
-              <h5>
-                <i class="far fa-newspaper"></i> Últimas entradas
-              </h5>
-            </div>
-            <div class="card-body">
-              <p>No hay entradas aún</p>
-            </div>
-          </div>
-        </div>
+          <?php
+            WriteEntry :: writeEntries();
+           ?>
       </div>
     </div>
 <?php include_once 'views/close_html.inc.php'; ?>
