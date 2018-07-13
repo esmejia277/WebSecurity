@@ -3,7 +3,7 @@ include_once 'app/SessionControl.inc.php';
 include_once 'app/Config.inc.php';
 Connection::openConnection();
 $total = RepoUser::getUsersNumber(Connection::getConnection());
-Connection::closeConnection();
+
 ?>
 
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
