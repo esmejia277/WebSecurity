@@ -43,6 +43,10 @@ class WriteEntry{
              ?>
             </div>
             <br>
+
+
+            
+            <br>
             <div class="text-right">
               <a class="btn btn-primary" href="#" role="button">Leer más</a>
             </div>
