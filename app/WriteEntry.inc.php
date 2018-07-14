@@ -37,13 +37,31 @@ class WriteEntry{
                  ?>
               </strong>
             </p>
+            <div class="text-justify">
             <?php
-              echo nl2br($entry -> getText());
+              echo nl2br(self :: shortenText($entry -> getText()));
              ?>
+            </div>
+            <br>
+            <div class="text-right">
+              <a class="btn btn-primary" href="#" role="button">Leer más</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <?php
+  }
+
+  public function shortenText($text){
+    $long = 400;
+    $result = '';
+    if(strlen($text) >= $long){
+      $result = substr($text, 0 , $long);
+      $result .= '...';
+    }else{
+      $result = $text;
+    }
+    return $result;
   }
 }
