@@ -3,8 +3,8 @@ include_once 'app/Connection.inc.php';
 include_once 'app/RepoUser.inc.php';
 include_once 'app/WriteEntry.inc.php';
 $title = "WebSecurity!";
-include_once 'views/open_html.inc.php';
-include_once 'views/navbar.inc.php';
+include_once 'templates/open_html.inc.php';
+include_once 'templates/navbar.inc.php';
 ?>
     <div class="container">
       <div class="jumbotron">
