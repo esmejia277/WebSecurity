@@ -10,8 +10,8 @@ if(isset($_GET['name']) && !empty($_GET['name'])){
 }
 
 $title = 'Bienvenido';
-include_once 'views/open_html.inc.php';
-include_once 'views/navbar.inc.php';
+include_once 'templates/open_html.inc.php';
+include_once 'templates/navbar.inc.php';
 ?>
 <div class="container">
   <div class="row">
@@ -29,4 +29,4 @@ include_once 'views/navbar.inc.php';
     </div>
   </div>
 </div>
-<?php include_once 'views/close_html.inc.php';?>
+<?php include_once 'templates/close_html.inc.php';?>

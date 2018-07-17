@@ -68,4 +68,4 @@ include_once 'templates/navbar.inc.php';
            ?>
       </div>
     </div>
-<?php include_once 'views/close_html.inc.php'; ?>
+<?php include_once 'templates/close_html.inc.php'; ?>

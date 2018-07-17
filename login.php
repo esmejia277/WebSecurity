@@ -6,8 +6,8 @@ include_once 'app/LoginValidate.inc.php';
 include_once 'app/SessionControl.inc.php';
 include_once 'app/Redirect.inc.php';
 $title = "Login";
-include_once 'views/open_html.inc.php';
-include_once 'views/navbar.inc.php';
+include_once 'templates/open_html.inc.php';
+include_once 'templates/navbar.inc.php';
 
 if(SessionControl :: ifStartedSession()){
   Redirect :: redirection(server);
@@ -68,4 +68,4 @@ if(isset($_POST['login'])){
     </div>
   </div>
 </div>
-<?php include_once 'views/close_html.inc.php'; ?>
+<?php include_once 'templates/close_html.inc.php'; ?>

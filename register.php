@@ -4,6 +4,7 @@ include_once 'app/RepoUser.inc.php';
 include_once 'app/User.inc.php';
 include_once 'app/RegisterValidate.inc.php';
 include_once 'app/Redirect.inc.php';
+include_once 'app/Config.inc.php';
 
 if(isset($_POST['send'])){
   Connection :: openConnection();
@@ -25,8 +26,8 @@ if(isset($_POST['send'])){
 }
 
 $title = "Registro";
-include_once 'views/open_html.inc.php';
-include_once 'views/navbar.inc.php';
+include_once 'templates/open_html.inc.php';
+include_once 'templates/navbar.inc.php';
 
 ?>
 <div class="container">
@@ -72,9 +73,9 @@ include_once 'views/navbar.inc.php';
               <form role = "form" method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
                 <?php
                 if(isset($_POST['send'])){   //if the submit button is pushed
-                  include_once 'views/submit_register.inc.php';
+                  include_once 'templates/submit_register.inc.php';
                 }else {
-                  include_once 'views/empty_register.inc.php';
+                  include_once 'templates/empty_register.inc.php';
                 }
                 ?>
               </form>
@@ -85,5 +86,5 @@ include_once 'views/navbar.inc.php';
   </div>
 </div>
 <?php
-include_once 'views/close_html.inc.php';
+include_once 'templates/close_html.inc.php';
 ?>
