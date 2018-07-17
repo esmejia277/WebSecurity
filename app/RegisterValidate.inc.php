@@ -131,7 +131,7 @@ class RegisterValidate{
   }
 
   public function showName(){
-    if($this -> name == ""){
+    if($this -> name !== ""){
       echo 'value ="' . $this -> name . '"';
     }
   }
