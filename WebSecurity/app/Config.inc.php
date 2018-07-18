@@ -6,7 +6,7 @@ define('password', '');
 define('database','WebSecurity');
 
 //routes
-define("server", "http://localhost:10000");
+define("server", "http://localhost:10000/WebSecurity");
 define("register", server . "/register.php");
 define("login", server . "/login.php");
 define("correct_register" , server . "/succesfull_register.php");
