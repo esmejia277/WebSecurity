@@ -13,6 +13,7 @@ create table users(
 create table entries(
   id int not null unique auto_increment,
   author_id int not null,
+  url varchar(255) not null unique,
   title varchar(255) not null unique,
   text text character set utf8 not null,
   date datetime not null,

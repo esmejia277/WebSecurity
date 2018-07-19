@@ -43,12 +43,9 @@ class WriteEntry{
              ?>
             </div>
             <br>
-
-
-            
             <br>
             <div class="text-right">
-              <a class="btn btn-primary" href="#" role="button">Leer más</a>
+              <a class="btn btn-primary" href="<?php echo entry . '/'.$entry -> getURL()?> " role="button">Leer más</a>
             </div>
           </div>
         </div>

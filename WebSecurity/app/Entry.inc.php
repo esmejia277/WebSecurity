@@ -4,14 +4,16 @@
 
     private $id;
     private $author_id;
+    private $url;
     private $title;
     private $text;
     private $date;
     private $active;
 
-    public function __construct($id, $author_id, $title, $text, $date, $active){
+    public function __construct($id, $author_id, $url,  $title, $text, $date, $active){
       $this -> id = $id;
       $this -> author_id = $author_id;
+      $this -> url = $url;
       $this -> title = $title;
       $this -> text = $text;
       $this -> date = $date;
@@ -33,6 +35,16 @@
     public function getAuthor_ID(){
       return $this -> author_id;
     }
+
+    public function getURL(){
+      return $this -> url;
+    }
+
+    public function setURL($url){
+      $this -> url = $url;
+    }
+
+
 
     public function setTitle($title){
       $this -> title = $title;

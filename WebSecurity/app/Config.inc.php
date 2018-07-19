@@ -11,6 +11,7 @@ define("register", server . "/registro");
 define("login", server . "/login");
 define("correct_register" , server . "/registro-correcto");
 define("logout", server . "/logout");
+define("entry", server . "/entrada");
 
 //rosources
 define("css", server . "/css/");
