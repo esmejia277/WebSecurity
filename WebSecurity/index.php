@@ -1,4 +1,14 @@
 <?php
+include_once 'app/Config.inc.php';
+include_once 'app/Connection.inc.php';
+
+include_once 'app/User.inc.php';
+include_once 'app/Entry.inc.php';
+include_once 'app/Comment.inc.php';
+
+include_once 'app/RepoUser.inc.php';
+include_once 'app/RepoEntry.inc.php';
+include_once 'app/RepoComment.inc.php';
 
 $components = parse_url($_SERVER["REQUEST_URI"]);
 $route = $components['path'];
@@ -29,6 +39,17 @@ if($part[0] == 'WebSecurity'){
     if ($part[1] == 'registro-correcto'){
       $name = $part[2];
       $route_prefered = 'views/succesfull_register.php';
+    }
+    if($part[1] == 'entrada'){
+      $url = $part[2];
+      Connection :: openConnection();
+      $entry = RepoEntry ::getEntryURL(Connection :: getConnection(), $url);
+
+      if($entry != null){
+        $route_prefered = 'views/entry.php';
+      }
+
+
     }
   }
 }
