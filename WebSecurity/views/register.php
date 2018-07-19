@@ -19,7 +19,7 @@ if(isset($_POST['send'])){
     $inserted = RepoUser :: UserInsert(Connection::getConnection(), $user);
     if($inserted){
       //redirect to welcome page
-      Redirect :: redirection(correct_register . '?name=' . $user -> getName());
+      Redirect :: redirection(correct_register . '/' . $user -> getName());
     }
   }
   Connection :: closeConnection();
@@ -70,7 +70,7 @@ include_once 'templates/navbar.inc.php';
             </h3>
           </div>
             <div class="card-body">
-              <form role = "form" method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
+              <form role = "form" method="post" action="<?php echo register ?>">
                 <?php
                 if(isset($_POST['send'])){   //if the submit button is pushed
                   include_once 'templates/submit_register.inc.php';

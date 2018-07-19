@@ -3,12 +3,6 @@ include_once 'app/Config.inc.php';
 include_once 'app/Connection.inc.php';
 include_once 'app/RepoUser.inc.php';
 
-if(isset($_GET['name']) && !empty($_GET['name'])){
-  $name = $_GET['name'];
-}else {
-  Redirect :: redirection(server);
-}
-
 $title = 'Bienvenido';
 include_once 'templates/open_html.inc.php';
 include_once 'templates/navbar.inc.php';

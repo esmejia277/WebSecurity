@@ -7,10 +7,10 @@ define('database','WebSecurity');
 
 //routes
 define("server", "http://localhost:10000/WebSecurity");
-define("register", server . "/register.php");
-define("login", server . "/login.php");
-define("correct_register" , server . "/succesfull_register.php");
-define("logout", server . "/logout.php");
+define("register", server . "/registro");
+define("login", server . "/login");
+define("correct_register" , server . "/registro-correcto");
+define("logout", server . "/logout");
 
 //rosources
 define("css", server . "/css/");
