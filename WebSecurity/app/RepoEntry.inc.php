@@ -57,4 +57,34 @@ class RepoEntry{
     }
     return $entries;
   }
+
+  public static function getEntryURL($connection, $url){
+    $entry = null;
+
+    if(isset($connection)){
+      try {
+        $sql = "SELECT * FROM entries WHERE url LIKE :url";
+        $sentence = $connection -> prepare($sql);
+        $sentence -> bindParam(':url', $url, PDO::PARAM_STR);
+        $sentence -> execute();
+        $result = $sentence -> fetch();
+
+        if(!empty($result)){
+          $entry = new Entry(
+            $result['id'],
+            $result['author_id'],
+            $result['url'],
+            $result['title'],
+            $result['text'],
+            $result['date'],
+            $result['active']
+          );
+        }
+
+      } catch (PDOException $e) {
+        print $e -> getMessage();
+      }
+    }
+    return $entry;
+  }
 }
