@@ -21,6 +21,9 @@ if($part[0] == 'WebSecurity'){
       case 'registro':
       $route_prefered = 'views/register.php';
         break;
+      case 'relleno':
+      $route_prefered = 'database/fill.php';
+        break;
     }
   }elseif (count($part) == 3) {
     if ($part[1] == 'registro-correcto'){

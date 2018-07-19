@@ -36,8 +36,9 @@ for ($i=0; $i < 100; $i++) { //entry data insert
   $title = random(10);
   $text = lorem();
   $author = rand(1,100);
+  $url = $title;
 
-  $entry = new Entry('', $author, $title, $text, '', '');
+  $entry = new Entry('', $author, $url, $title, $text, '', '');
   RepoEntry :: EntryInsert(Connection :: getConnection(), $entry);
 }
 
