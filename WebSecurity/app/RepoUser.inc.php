@@ -138,4 +138,29 @@ class RepoUser{
     }
     return $user;
   }
+
+  public static function getUserID($connection, $id){
+    $user = null;
+    if(isset($connection)){
+      try {
+        include_once 'User.inc.php';
+        $sql = 'SELECT * FROM users WHERE id = :id';
+        $sentence = $connection -> prepare($sql);
+        $sentence -> bindParam(':id', $id, PDO::PARAM_STR);
+        $sentence -> execute();
+        $result = $sentence -> fetch();
+        if(!empty($result)){
+          $user = new User($result['id'],
+          $result['name'],
+          $result['email'],
+          $result['passw'],
+          $result['date_sign'],
+          $result['active']);
+        }
+      } catch (PDOException $e) {
+        print 'Error' . $ex -> getMessage();
+      }
+    }
+    return $user;
+  }
 }
