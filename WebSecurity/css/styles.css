@@ -1,6 +1,7 @@
 body{
   background-color: #dee1e5;
   font-family: 'Ubuntu', sans-serif;
+  background-image: url('/WebSecurity/img/background.jpg');
 }
 
 .jumbotron{
@@ -55,4 +56,24 @@ body{
 .dropdown-menu{
   background-color: #212529;
   padding-left: 20px;
+}
+
+.btn-primary{
+  background-color: #343a40 !important;
+  border: none;
+}
+
+.btn-primary:hover{
+  background-color: #e9b20d !important;
+}
+
+.container-article{
+  padding: 2em;
+  margin: 2em 7em 7em 7em;
+  background-color: white;
+  -moz-border-radius: 25px;
+  -webkit-border-radius: 25px;
+  border-radius: 25px;
+
+
 }
