@@ -46,10 +46,9 @@ if($part[0] == 'WebSecurity'){
       $entry = RepoEntry ::getEntryURL(Connection :: getConnection(), $url);
 
       if($entry != null){
+        $author = RepoUser :: getUserID(Connection :: getConnection(), $entry -> getAuthor_ID());
         $route_prefered = 'views/entry.php';
       }
-
-
     }
   }
 }
