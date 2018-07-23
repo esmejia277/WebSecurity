@@ -87,4 +87,35 @@ class RepoEntry{
     }
     return $entry;
   }
+
+  public static function getRandomEntries($connection, $limit){
+    $entries = [];
+    if (isset($connection)) {
+      try {
+        $sql = "SELECT * FROM entries ORDER BY RAND() LIMIT $limit" ;
+        $sentence = $connection -> prepare($sql);
+        $sentence -> execute();
+        $result = $sentence -> fetchAll();
+
+        if(count($result)){
+          foreach ($result as $row) {
+            $entries[] = new Entry(
+              $row['id'],
+              $row['author_id'],
+              $row['url'],
+              $row['title'],
+              $row['text'],
+              $row['date'],
+              $row['active']
+            );
+          }
+        }
+      } catch (PDOException $e) {
+        print 'ERROR' . $e -> getMessage();
+      }
+    }
+    
+    return $entries;
+
+  }
 }
