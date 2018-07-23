@@ -45,11 +45,13 @@ include_once 'templates/navbar.inc.php';
     <div class="col-md-12">
       <article class = "text-justify">
         <?php echo nl2br($entry ->getText()); ?>
-
       </article>
-
     </div>
   </div>
+  <?php
+  include_once 'templates/randomEntries.inc.php';
+   ?>
+  <br>
 </div>
 <br>
 
