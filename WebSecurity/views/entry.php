@@ -52,6 +52,13 @@ include_once 'templates/navbar.inc.php';
   include_once 'templates/randomEntries.inc.php';
    ?>
   <br>
+  <?php //var comments on memory, we can see it
+  if(count($comments) > 0){
+    include_once 'templates/comments.inc.php';
+  } else{
+    echo '<p>No hay comentarios</p>';
+  }
+   ?>
 </div>
 <br>
 

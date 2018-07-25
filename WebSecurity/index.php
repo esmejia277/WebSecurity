@@ -47,6 +47,7 @@ if($part[0] == 'WebSecurity'){
 
       if($entry != null){
         $author = RepoUser :: getUserID(Connection :: getConnection(), $entry -> getAuthor_ID());
+        $comments = RepoComment :: getComment(Connection :: getConnection(), $entry -> getID());
         $route_prefered = 'views/entry.php';
         $random_entries = RepoEntry :: getRandomEntries(Connection :: getConnection(), 3);
       }
