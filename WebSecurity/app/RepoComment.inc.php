@@ -27,4 +27,35 @@ class RepoComment{
     }
     return $insert_comment;
   }
+
+  public static function getComment($connection, $entry_id){
+
+    $comment = array();
+    if(isset($connection)){
+      try {
+        include_once 'Comment.inc.php';
+        $sql = "SELECT * FROM comments WHERE id = :entry_id";
+        $sentence = $connection -> prepare($sql);
+        $sentence -> bindParam(':entry_id', $entry_id, PDO::PARAM_STR);
+        $sentence -> execute();
+        $result = $sentence -> fetchAll();
+
+        if(count($result)){
+          foreach ($result as $row) {
+            $comment[] = new Comment(
+              $row['id'],
+              $row['author_id'],
+              $row['entry_id'],
+              $row['title'],
+              $row['text'],
+              $row['date']
+            );
+          }
+        }
+      } catch (PDOException $e) {
+        print 'ERROR' . $e -> getMessage();
+      }
+    }
+    return $comment;
+  }
 }
