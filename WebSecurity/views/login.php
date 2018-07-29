@@ -39,7 +39,7 @@ if(isset($_POST['login'])){
           <h4 class="text-center">Iniciar sesión</h4>
         </div>
         <div class="card-body ">
-          <form role = "form" method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
+          <form role = "form" method="post" action="<?php echo login ?>">
             <h2 class="text-center">Introduce tus datos</h2>
             <br>
             <label for="email" class="sr-only">Email</label> <!-- invident -->
