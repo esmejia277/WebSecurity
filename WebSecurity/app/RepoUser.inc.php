@@ -129,7 +129,7 @@ class RepoUser{
           $result['name'],
           $result['email'],
           $result['passw'],
-          $result['data_sign'],
+          $result['date_sign'],
           $result['active']);
         }
       } catch (PDOException $e) {

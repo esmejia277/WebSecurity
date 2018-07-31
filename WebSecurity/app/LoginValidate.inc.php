@@ -7,15 +7,16 @@ class LoginValidate{
 
   public function __construct($email, $password, $connection){
     $this -> error = "";
+
     if(!$this -> initVar($email) || !$this -> initVar($password)){
       $this -> user = null;
       $this -> error = "Introduce tu email y contraseña";
     }else{
       $this -> user = RepoUser :: getUserEmail($connection, $email);
-      if(is_null($this -> user || !password_verify($password, $this -> user -> getPassword()))){
-        $this -> error = "Datos Incorrectos";
+      if (is_null($this -> user) || !password_verify($password, $this -> user -> getPassword())) {
+        $this -> error = "Datos incorrectos";
       }
-    }
+          }
   }
 
   private function initVar($var){
