@@ -16,7 +16,6 @@ if(SessionControl :: ifStartedSession()){
 if(isset($_POST['login'])){
   Connection :: openConnection();
   $validate = new LoginValidate($_POST['email-login'], $_POST['password-login'], Connection::getConnection());
-  var_dump($validate);
 
   if($validate -> getError() === '' && !is_null($validate -> getUser())){ // if there's not error
     SessionControl :: sessionStart(
@@ -25,8 +24,9 @@ if(isset($_POST['login'])){
     );
     Redirect :: redirection(server);
 
-  }else{
-    echo 'fallo';
+  }else{ ?>
+
+    <?php
   }
   Connection :: closeConnection();
 }
@@ -43,13 +43,17 @@ if(isset($_POST['login'])){
             <h2 class="text-center">Introduce tus datos</h2>
             <br>
             <label for="email" class="sr-only">Email</label> <!-- invident -->
-            <input type="email" id = "email" name="email-login" placeholder="email..." class="form-control" required autofocus>
-            <?php if(isset($_POST['login']) && $_POST['email'] && !empty($_POST['email'])){
-              echo 'value = "' . $_POST['email'] . '"';
-            } ?>
+            <input type="email" id = "email" name="email-login" placeholder="email..." class="form-control" autofocus>
+
+            <?php 
+            if (isset($_POST['login']) && isset($_POST['email']) && !empty($_POST['email'])) {
+                echo 'value="' . $_POST['email'] . '"';
+              } 
+            ?>
+
             <br>
             <label for="password" class="sr-only">Contraseña</label> <!-- invident -->
-            <input type="password" id = "password" name="password-login" placeholder="contraseña..." class="form-control" required>
+            <input type="password" id = "password" name="password-login" placeholder="contraseña..." class="form-control">
             <br>
             <?php
             if(isset($_POST['login'])){
